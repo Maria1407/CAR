@@ -26,8 +26,8 @@ public class Car {
 
         if (Gdx.input.isTouched()){
             int x=Gdx.input.getX();
-            if(x>position.x) vx=40;
-            else vx=-40;
+            if(x>position.x) vx=20;
+            else vx=-20;
         }
         position.x += vx;
         vx=0;

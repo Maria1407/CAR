@@ -16,18 +16,18 @@ public class Obstacles {
 
         public WallPair(Vector2 pos) {
             position = pos;
-            speed = 40;
+            speed = 20;
             offset = new Random().nextInt(500);
-            emptySpace = new Rectangle(position.x, position.y, new Random().nextInt(300), betweenDistance);
+            emptySpace = new Rectangle(position.x, position.y, offset,50);
         }
 
         public void update() {
             position.y -= speed;
-//            if (position.y > 3000) {
-//                position.y = 0;
-//                offset = new Random().nextInt(150);
-//            }
-//            emptySpace.y = position.y;
+            if (position.y < 0) {
+                position.y = 3000;
+                offset = new Random().nextInt(150);
+            }
+            emptySpace.y = position.y;
         }
     }
 
@@ -36,18 +36,17 @@ public class Obstacles {
     int betweenDistance;
     public Obstacles(){
         txt = new Texture("wall.jpg");
-        obs = new WallPair[100];
+        obs = new WallPair[4];
         int startPosY=3000;
         for (int i = 0; i < obs.length; i++) {
-            obs[i] = new WallPair(new Vector2(0,startPosY));
-            startPosY += new Random().nextInt(200)+800;
+            obs[i] = new WallPair(new Vector2(new Random().nextInt(500),startPosY));
+            startPosY += new Random().nextInt(300)+600;
         }
-        int x=0;
     }
 
     public void render(SpriteBatch batch) {
         for (int i = 0; i < obs.length; i++) {
-                batch.draw(txt, 0, obs[i].position.y);
+            batch.draw(txt, obs[i].position.x, obs[i].position.y);
         }
     }
 
@@ -56,10 +55,10 @@ public class Obstacles {
     }
 
     public void recreate(){
-            int startPosY=3000;
-            for (int i = 0; i < obs.length; i++) {
-                obs[i] = new WallPair(new Vector2(new Random().nextInt(300),startPosY));
-                startPosY += new Random().nextInt(200)+500;
-            }
+        int startPosY=3000;
+        for (int i = 0; i < obs.length; i++) {
+            obs[i] = new WallPair(new Vector2(new Random().nextInt(500),startPosY));
+            startPosY += new Random().nextInt(300)+600;
+        }
     }
 }

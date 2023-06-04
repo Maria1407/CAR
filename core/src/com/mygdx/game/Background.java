@@ -18,7 +18,7 @@ public class Background {
     private int speed;
     private BGPicture[] backs;
     public Background(){
-        speed = 40;
+        speed = 20;
         backs = new BGPicture[2];
         backs[0] = new BGPicture(new Vector2(0,0));
         backs[1] = new BGPicture(new Vector2(0,1200));

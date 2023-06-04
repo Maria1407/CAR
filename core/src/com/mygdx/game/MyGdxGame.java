@@ -47,16 +47,16 @@ public class MyGdxGame extends ApplicationAdapter {
 		bg.update();
 		car.update();
 		obstacles.update();
-//		for (int i = 0; i < Obstacles.obs.length; i++) {
-//			if(car.position.y > Obstacles.obs[i].position.y && car.position.y < Obstacles.obs[i].position.y+50){
-//				if(!Obstacles.obs[i].emptySpace.contains(car.position)){
-//					gameOver = true;
-//				}
-//			}
-//		}
-//		if(Gdx.input.isTouched() && gameOver){
-//			recreate();
-//		}
+		for (int i = 0; i < Obstacles.obs.length; i++) {
+			if(car.position.y > Obstacles.obs[i].position.y && car.position.y < Obstacles.obs[i].position.y+7){
+				if(!Obstacles.obs[i].emptySpace.contains(car.position)){
+					gameOver = true;
+				}
+			}
+		}
+		if(Gdx.input.isTouched() && gameOver){
+			recreate();
+		}
 	}
 
 	@Override
